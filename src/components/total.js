@@ -3,20 +3,59 @@ import { connect } from "react-redux";
 import { pizzaBases, pizzaSauces, pizzaToppings } from "../lib";
 
 export class Total extends PureComponent {
-  getTotalPrice() {
+  getFoodPrice() {
     var basePrice = this.props.base;
     var saucePrice = this.props.sauce;
-    /* var toppingPrice = this.props.topping
-      .map(topping => pizzaToppings[topping])
+    //var toppingPrice = this.props.topping;
+    var toppingPrice = this.props.topping
+      .map(
+        topping =>
+          topping * this.props.topping.length / this.props.topping.length
+      )
       .reduce((a, b) => a + b, 0);
-    console.log(this.props.topping.; */
-    return basePrice + saucePrice;
+    console.log(this.props.topping);
+
+    return (
+      Number(basePrice) +
+      Number(saucePrice) +
+      Number(toppingPrice)
+    ).toFixed(2);
+  }
+
+  addDrone() {
+    let foodPrice = Number(this.getFoodPrice());
+    return (foodPrice + 0.1 * foodPrice).toFixed(2);
   }
 
   render() {
     return (
       <div>
-        <h3>${this.getTotalPrice()}</h3>
+        <table>
+          <tr>
+            <td>
+              <h3>Your Pizza price </h3>
+            </td>
+            <td>
+              <h3>&euro; {this.getFoodPrice()}</h3>{" "}
+            </td>
+            <td>
+              {" "}
+              <button clasName="Order">Order</button>{" "}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Order with Dron Delivery! only 10%! </h3>
+            </td>
+            <td>
+              <h3>&euro; {this.addDrone()}</h3>
+            </td>
+            <td>
+              {" "}
+              <button clasName="Order">Order</button>{" "}
+            </td>
+          </tr>
+        </table>
       </div>
     );
   }

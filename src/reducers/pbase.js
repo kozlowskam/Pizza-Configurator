@@ -1,6 +1,6 @@
 import { PICK_BASE } from "../actions/actions";
 
-export default (state = null, action) => {
+export default (state = 0, action) => {
   switch (action.type) {
     case PICK_BASE:
       return action.payload.value;

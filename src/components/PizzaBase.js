@@ -5,10 +5,7 @@ import { pizzaBases } from "../lib";
 import store from "../store";
 
 export class PizzaBase extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
-  }
+  state = {};
 
   handleChange = event => {
     this.setState({ value: event.target.value });

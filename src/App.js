@@ -18,8 +18,6 @@ class App extends Component {
         <PizzaTopping />
 
         <Total />
-
-        <p>{this.props.base}</p>
       </div>
     );
   }

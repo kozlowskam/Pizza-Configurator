@@ -5,7 +5,7 @@ import { pickToppings } from "../actions/actions";
 import store from "../store";
 
 export class PizzaTopping extends PureComponent {
-  state = { value: "" };
+  state = { value: [] };
 
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -27,7 +27,7 @@ export class PizzaTopping extends PureComponent {
               //checked={this.state.value === topping}
               onChange={this.handleChange}
             />
-            {topping.name} ${topping.price} <br />
+            {topping.name} <br />
           </label>
         ))}
       </div>

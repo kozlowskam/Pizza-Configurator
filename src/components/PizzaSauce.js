@@ -9,7 +9,9 @@ export class PizzaSauce extends PureComponent {
 
   handleChange = event => {
     this.setState({ value: event.target.value });
-    store.dispatch(pickSauce({ value: event.target.value }));
+    if ({ value: event.target.value }.length <= 3) {
+      store.dispatch(pickSauce({ value: event.target.value }));
+    } else console.log("tomuch");
   };
 
   render() {
@@ -23,7 +25,7 @@ export class PizzaSauce extends PureComponent {
               name="sauce"
               type="checkbox"
               value={sauce.price}
-              checked={this.state.value === sauce}
+              //checked={this.state.value === sauce}
               onChange={this.handleChange}
             />
             {sauce.name} ${sauce.price} <br />
