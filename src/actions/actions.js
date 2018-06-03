@@ -1,6 +1,7 @@
 export const PICK_BASE = "PICK_BASE";
 export const PICK_SAUCE = "PICK_SAUCE";
 export const PICK_TOPPINGS = "PICK_TOPPINGS";
+export const DELETE_TOPPING = "RESET_TOPPINGS";
 
 export const pickBase = base => {
   return {
@@ -19,6 +20,13 @@ export const pickSauce = sauce => {
 export const pickToppings = toppings => {
   return {
     type: "PICK_TOPPINGS",
+    payload: toppings
+  };
+};
+
+export const deleteTopping = toppings => {
+  return {
+    type: "DELETE_TOPPING",
     payload: toppings
   };
 };

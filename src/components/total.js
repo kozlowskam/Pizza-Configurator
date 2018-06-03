@@ -6,7 +6,6 @@ export class Total extends PureComponent {
   getFoodPrice() {
     var basePrice = this.props.base;
     var saucePrice = this.props.sauce;
-    //var toppingPrice = this.props.topping;
     var toppingPrice = this.props.topping
       .map(
         topping =>
@@ -33,7 +32,9 @@ export class Total extends PureComponent {
         <table>
           <tr>
             <td>
-              <h3>Your Pizza price </h3>
+              <h3>
+                Your Pizza price: <br /> Order now!{" "}
+              </h3>
             </td>
             <td>
               <h3>&euro; {this.getFoodPrice()}</h3>{" "}
@@ -45,7 +46,9 @@ export class Total extends PureComponent {
           </tr>
           <tr>
             <td>
-              <h3>Order with Dron Delivery! only 10%! </h3>
+              <h3>
+                Order with Turbo Dron Delivery <br /> Only 10% of total price!{" "}
+              </h3>
             </td>
             <td>
               <h3>&euro; {this.addDrone()}</h3>

@@ -5,32 +5,35 @@ import { pickSauce } from "../actions/actions";
 import store from "../store";
 
 export class PizzaSauce extends PureComponent {
-  state = { value: "" };
+  constructor() {
+    super();
+
+    this.state = { value: "" };
+  }
 
   handleChange = event => {
     this.setState({ value: event.target.value });
-    if ({ value: event.target.value }.length <= 3) {
-      store.dispatch(pickSauce({ value: event.target.value }));
-    } else console.log("tomuch");
+    store.dispatch(pickSauce({ value: event.target.value }));
   };
 
   render() {
     return (
       <div>
         <h2> Pick your Pizza Sauce </h2>
-
-        {pizzaSauces.map(sauce => (
-          <label key={sauce.name}>
-            <input
-              name="sauce"
-              type="checkbox"
-              value={sauce.price}
-              //checked={this.state.value === sauce}
-              onChange={this.handleChange}
-            />
-            {sauce.name} ${sauce.price} <br />
-          </label>
-        ))}
+        <form>
+          {pizzaSauces.map(sauce => (
+            <label key={sauce.name}>
+              <input
+                name="sauce"
+                type="checkbox"
+                value={sauce.price}
+                checked={this.state.sauce}
+                onChange={this.handleChange}
+              />
+              {sauce.name} &euro;{sauce.price} <br />
+            </label>
+          ))}
+        </form>
       </div>
     );
   }
