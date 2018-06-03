@@ -3,6 +3,7 @@ import "./App.css";
 import { PizzaBase } from "./components/PizzaBase";
 import { PizzaSauce } from "./components/PizzaSauce";
 import { PizzaTopping } from "./components/PizzaTopping";
+import Total from "./components/total";
 
 class App extends Component {
   render() {
@@ -15,6 +16,10 @@ class App extends Component {
         <PizzaBase />
         <PizzaSauce />
         <PizzaTopping />
+
+        <Total />
+
+        <p>{this.props.base}</p>
       </div>
     );
   }

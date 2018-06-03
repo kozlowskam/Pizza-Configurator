@@ -1,31 +1,35 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { pickBase } from "../actions/actions";
 import { pizzaBases } from "../lib";
+import store from "../store";
 
 export class PizzaBase extends PureComponent {
-  state = { value: "" };
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
   }
+
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+    store.dispatch(pickBase({ value: event.target.value }));
+  };
 
   render() {
     return (
       <div>
         <h2> Pick your Pizza Base </h2>
 
-        {Object.keys(pizzaBases).map((name, i) => (
-          <label key={i}>
-            {" "}
+        {pizzaBases.map(base => (
+          <label key={base.name}>
             <input
               name="base"
-              type="radio"
-              value="name"
-              checked={this.state.value === "name"}
+              type="checkbox"
+              value={base.price}
+              //checked={this.state.value === base}
               onChange={this.handleChange}
             />
-            {name} <br />
+            {base.name} ${base.price} <br />
           </label>
         ))}
       </div>
@@ -33,4 +37,4 @@ export class PizzaBase extends PureComponent {
   }
 }
 
-export default PizzaBase;
+export default connect(null, { pickBase })(PizzaBase);

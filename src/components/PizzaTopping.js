@@ -1,14 +1,16 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pizzaToppings } from "../lib";
+import { pickToppings } from "../actions/actions";
+import store from "../store";
 
 export class PizzaTopping extends PureComponent {
   state = { value: "" };
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ value: event.target.value });
-  }
+    store.dispatch(pickToppings({ value: event.target.value }));
+  };
 
   render() {
     return (
@@ -16,17 +18,16 @@ export class PizzaTopping extends PureComponent {
         <h2> Pick your Pizza Topping </h2>
         <h3> max 3 toppings, toppings cost € 0,50 each </h3>
 
-        {Object.keys(pizzaToppings).map((name, i) => (
-          <label key={i}>
-            {" "}
+        {pizzaToppings.map(topping => (
+          <label key={topping.name}>
             <input
-              name="base"
-              type="radio"
-              value="name"
-              checked={this.state.value === "name"}
+              name="topping"
+              type="checkbox"
+              value={topping.price}
+              //checked={this.state.value === topping}
               onChange={this.handleChange}
             />
-            {name} <br />
+            {topping.name} ${topping.price} <br />
           </label>
         ))}
       </div>
@@ -34,4 +35,4 @@ export class PizzaTopping extends PureComponent {
   }
 }
 
-export default PizzaTopping;
+export default connect(null, { pickToppings })(PizzaTopping);

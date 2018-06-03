@@ -11,12 +11,12 @@ export const pickBase = base => {
 
 export const pickSauce = sauce => {
   return {
-    type: "MAKE_GUESS",
+    type: "PICK_SAUCE",
     payload: sauce
   };
 };
 
-export const pickToppings = sauce => {
+export const pickToppings = toppings => {
   return {
     type: "PICK_TOPPINGS",
     payload: toppings
