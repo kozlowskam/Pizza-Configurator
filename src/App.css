@@ -27,38 +27,6 @@
   padding: 7px;
   align-content: center;
 }
-button {
-  display: inline-flex;
-  height: 30px;
-  width: 30px;
-  border: none;
-  align-content: center;
-  text-align: center;
-  font-size: 17px;
-  font-style: bold;
-  font-family: "Arial";
-  color: blue;
-  padding: 7px;
-  margin: 7px;
-  cursor: pointer;
-  background-color: #33ff00;
-}
-.button2 {
-  display: inline-flex;
-  height: 50px;
-  width: 70px;
-  border: none;
-  align-content: center;
-  text-align: center;
-  font-size: 17px;
-  font-weight: bold;
-  font-family: "Arial";
-  color: blue;
-  padding: 7px;
-  margin: 7px;
-  cursor: pointer;
-  background-color: #33ff00;
-}
 
 .title {
   font-size: 15px;
@@ -67,15 +35,6 @@ button {
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 h1 {
@@ -127,4 +86,8 @@ table {
   background-color: white;
   color: black;
   list-style-type: none;
+}
+
+img {
+  width: 100%;
 }

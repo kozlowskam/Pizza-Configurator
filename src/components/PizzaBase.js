@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { pickBase } from "../actions/actions";
 import { pizzaBases } from "../lib";
 import store from "../store";
 
-export class PizzaBase extends PureComponent {
+export class PizzaBase extends React.Component {
   constructor() {
     super();
 
@@ -13,10 +13,10 @@ export class PizzaBase extends PureComponent {
 
   handleChange = event => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    console.log(target.value);
-    this.setState({ value: event.target.value });
-    store.dispatch(pickBase({ value: event.target.value }));
+    // const value = target.checked ? target.value : 0;
+    const value = event.target.value;
+    this.setState({ value });
+    store.dispatch(pickBase({ value }));
   };
 
   render() {
@@ -28,9 +28,9 @@ export class PizzaBase extends PureComponent {
             <label key={base.name}>
               <input
                 name="base"
-                type="checkbox"
+                type="radio"
                 value={base.price}
-                checked={this.state.base}
+                checked={this.state.value == base.price}
                 onChange={this.handleChange}
               />
               {base.name} &euro;{base.price} <br />
@@ -42,4 +42,7 @@ export class PizzaBase extends PureComponent {
   }
 }
 
-export default connect(null, { pickBase })(PizzaBase);
+export default connect(
+  null,
+  { pickBase }
+)(PizzaBase);

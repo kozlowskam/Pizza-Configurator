@@ -13,9 +13,9 @@ export class PizzaTopping extends PureComponent {
 
   handleChange = event => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    this.setState({ value: event.target.value });
-    store.dispatch(pickToppings({ value: event.target.value }));
+    const value = target.checked ? target.value : 0;
+    this.setState[value];
+    store.dispatch(pickToppings({ value }));
   };
 
   render() {
@@ -42,4 +42,7 @@ export class PizzaTopping extends PureComponent {
   }
 }
 
-export default connect(null, { pickToppings })(PizzaTopping);
+export default connect(
+  null,
+  { pickToppings }
+)(PizzaTopping);

@@ -1,10 +1,10 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { pizzaSauces } from "../lib";
 import { pickSauce } from "../actions/actions";
 import store from "../store";
 
-export class PizzaSauce extends PureComponent {
+export class PizzaSauce extends React.Component {
   constructor() {
     super();
 
@@ -12,8 +12,10 @@ export class PizzaSauce extends PureComponent {
   }
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
-    store.dispatch(pickSauce({ value: event.target.value }));
+    const target = event.target;
+    const value = event.target.value;
+    this.setState({ value });
+    store.dispatch(pickSauce({ value }));
   };
 
   render() {
@@ -25,9 +27,9 @@ export class PizzaSauce extends PureComponent {
             <label key={sauce.name}>
               <input
                 name="sauce"
-                type="checkbox"
+                type="radio"
                 value={sauce.price}
-                checked={this.state.sauce}
+                checked={this.state.value == sauce.price}
                 onChange={this.handleChange}
               />
               {sauce.name} &euro;{sauce.price} <br />
@@ -39,4 +41,7 @@ export class PizzaSauce extends PureComponent {
   }
 }
 
-export default connect(null, { pickSauce })(PizzaSauce);
+export default connect(
+  null,
+  { pickSauce }
+)(PizzaSauce);
