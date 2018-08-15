@@ -33,7 +33,8 @@ export class PizzaBase extends React.Component {
                 checked={this.state.value == base.price}
                 onChange={this.handleChange}
               />
-              {base.name} &euro;{base.price} <br />
+              {base.name} &euro;
+              {base.price} <br />
             </label>
           ))}
         </form>

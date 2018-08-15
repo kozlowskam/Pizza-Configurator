@@ -8,8 +8,7 @@ export class Total extends PureComponent {
     var saucePrice = this.props.sauce;
     var toppingPrice = this.props.topping
       .map(
-        topping =>
-          topping * this.props.topping.length / this.props.topping.length
+        topping => (0.5 * this.props.topping.length) / this.props.topping.length
       )
       .reduce((a, b) => a + b, 0);
     console.log(this.props.topping);

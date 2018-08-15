@@ -12,28 +12,33 @@ export class PizzaTopping extends PureComponent {
   }
 
   handleChange = event => {
-    const target = event.target;
-    const value = target.checked ? target.value : 0;
-    this.setState[value];
-    store.dispatch(pickToppings({ value }));
+    if (event.target.checked) {
+      store.dispatch(pickToppings(event.target.value));
+      console.log(event.target.value);
+    } else {
+      console.log("deleting" + event.target);
+      store.dispatch(deleteTopping(event.target.value));
+    }
   };
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
 
   render() {
     return (
       <div>
-        <h2> Pick your Pizza Topping </h2>
-        <h3> max 3 toppings, € 0,50 each </h3>
-        <form>
+        <form
+          value={this.state.value}
+          onSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+        >
+          <h2> Pick your Pizza Topping € 0,50 each </h2>
+
           {pizzaToppings.map(topping => (
             <label key={topping.name}>
-              <input
-                name="topping"
-                type="checkbox"
-                value={topping.price}
-                checked={this.state.topping}
-                onChange={this.handleChange}
-              />
-              {topping.name} <br />
+              <input type="checkbox" value={topping.name} />
+              {topping.name}
             </label>
           ))}
         </form>
@@ -44,5 +49,5 @@ export class PizzaTopping extends PureComponent {
 
 export default connect(
   null,
-  { pickToppings }
+  { pickToppings, deleteTopping }
 )(PizzaTopping);
