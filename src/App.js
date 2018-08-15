@@ -1,24 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
-import { PizzaBase } from "./components/PizzaBase";
-import { PizzaSauce } from "./components/PizzaSauce";
-import { PizzaTopping } from "./components/PizzaTopping";
-import Total from "./components/total";
+import Pizza from "./components/Pizza";
+import Order from "./components/Order";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <img src={require("./pizza_header2.png")} />
-        <header className="App-header">
-          <h1 className="App-title"> NewAgePizza </h1>
-        </header>
-        <PizzaBase />
-        <PizzaSauce />
-        <PizzaTopping />
+      <Router>
+        <div className="App">
+          <Route exact path="/pizza" component={Pizza} />
+          <Route exact path="/order" component={Order} />
 
-        <Total />
-      </div>
+          <Route exact path="/" render={() => <Redirect to="/pizza" />} />
+        </div>
+      </Router>
     );
   }
 }

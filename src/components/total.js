@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { pizzaBases, pizzaSauces, pizzaToppings } from "../lib";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 export class Total extends PureComponent {
   getFoodPrice() {
@@ -40,7 +42,10 @@ export class Total extends PureComponent {
             </td>
             <td>
               {" "}
-              <button clasName="Order">Order</button>{" "}
+              <Link className="Link_button" to={`/order`}>
+                {" "}
+                ORDER{" "}
+              </Link>
             </td>
           </tr>
           <tr>
@@ -53,8 +58,10 @@ export class Total extends PureComponent {
               <h3>&euro; {this.addDrone()}</h3>
             </td>
             <td>
-              {" "}
-              <button clasName="Order">Order</button>{" "}
+              <Link className="Link_button" to={`/order`}>
+                {" "}
+                ORDER{" "}
+              </Link>
             </td>
           </tr>
         </table>

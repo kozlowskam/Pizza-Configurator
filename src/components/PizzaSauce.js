@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { pizzaSauces } from "../lib";
 import { pickSauce } from "../actions/actions";
 import store from "../store";
+import "../App.css";
 
 export class PizzaSauce extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ export class PizzaSauce extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h2> Pick your Pizza Sauce </h2>
         <form>
           {pizzaSauces.map(sauce => (
@@ -32,7 +33,8 @@ export class PizzaSauce extends React.Component {
                 checked={this.state.value == sauce.price}
                 onChange={this.handleChange}
               />
-              {sauce.name} &euro;{sauce.price} <br />
+              {sauce.name} &euro;
+              {sauce.price} <br />
             </label>
           ))}
         </form>

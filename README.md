@@ -5,7 +5,6 @@ Forms are an important part of most real-world web apps. React enables you to ma
 
 What better to configure then a pizza? We're programmers after all, so let's make dinner.
 
-
 Pizza Configurator
 You're asked to create a pizza configurator for NewAgePizza.com, a new and hip venture to get your pizza. It should be a single page that contains all the following elements.
 
@@ -29,7 +28,7 @@ Red union
 Spinach
 Cherry tomatoes
 Chicken
-Rules: max. 3 toppings, toppings cost € 0,50 apiece
+toppings cost € 0,50 a piece
 
 Last but not least, you can choose turbo-drone-delivery which is an additional 10% on top of the total pizza price.
 

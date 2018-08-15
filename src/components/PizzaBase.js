@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { pickBase } from "../actions/actions";
 import { pizzaBases } from "../lib";
 import store from "../store";
+import "../App.css";
 
 export class PizzaBase extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ export class PizzaBase extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h2> Pick your Pizza Base </h2>
         <form>
           {pizzaBases.map(base => (
