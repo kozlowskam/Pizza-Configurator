@@ -117,11 +117,10 @@ img {
   background-color: aliceblue;
   width: 55%;
   margin: 30px auto;
-  padding: 3%;
-
+  padding: 1%;
   display: block;
   float: center;
   align-self: center;
 
-  justify-content: center;
+  justify-content: space-around;
 }
